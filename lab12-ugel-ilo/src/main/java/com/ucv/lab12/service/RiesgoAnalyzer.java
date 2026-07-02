@@ -18,7 +18,6 @@ public class RiesgoAnalyzer {
         return clasificar(calcularScore(d));
     }
 
-    /** Devuelve un puntaje de 0 (sin riesgo) a 100 (riesgo crítico). */
     public double calcularScore(DeudaDocente d) {
         if (d == null) return 0;
 
@@ -42,10 +41,10 @@ public class RiesgoAnalyzer {
     private double puntajeSituacionLaboral(String situacion) {
         if (situacion == null) return 50;
         return switch (situacion.toUpperCase()) {
-            case "CESANTE" -> 100;     // mayor riesgo de no pago: ya no percibe haberes
-            case "CONTRATADO" -> 65;   // vínculo laboral temporal
+            case "CESANTE" -> 100;
+            case "CONTRATADO" -> 65;
             case "ENCARGADO" -> 45;
-            case "NOMBRADO" -> 20;     // menor riesgo: descuento por planilla estable
+            case "NOMBRADO" -> 20;
             default -> 50;
         };
     }

@@ -7,22 +7,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-/**
- * Utilidad de encriptación simétrica AES-128/CBC para datos confidenciales
- * (CE2 - "encriptación de datos confidenciales", alineado a ISO/IEC 27001
- * control A.10 "Criptografía").
- *
- * Se utiliza para cifrar el DNI de los docentes antes de persistirlo en la
- * base de datos. Cada valor cifrado incluye un IV aleatorio propio
- * (prefijado al texto cifrado), por lo que dos DNIs iguales nunca producen
- * el mismo texto cifrado (protección contra análisis de patrones).
- *
- * NOTA IMPORTANTE PARA PRODUCCIÓN: en este prototipo académico la llave
- * AES se define como constante para simplificar la ejecución local. En un
- * entorno productivo real la llave debe residir en un gestor de secretos
- * (Azure Key Vault, AWS KMS, HashiCorp Vault, etc.) y rotarse periódicamente,
- * nunca debe versionarse junto al código fuente.
- */
 public final class CryptoUtil {
 
     private static final String TRANSFORMACION = "AES/CBC/PKCS5Padding";
@@ -47,7 +31,6 @@ public final class CryptoUtil {
 
             byte[] cifrado = cipher.doFinal(textoPlano.getBytes(StandardCharsets.UTF_8));
 
-            // Se antepone el IV al texto cifrado para poder descifrarlo después.
             byte[] resultado = new byte[iv.length + cifrado.length];
             System.arraycopy(iv, 0, resultado, 0, iv.length);
             System.arraycopy(cifrado, 0, resultado, iv.length, cifrado.length);

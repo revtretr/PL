@@ -29,10 +29,8 @@ public class DeudaDocente {
     private final StringProperty  estado             = new SimpleStringProperty();
     private final StringProperty  observaciones      = new SimpleStringProperty();
 
-    /** Propiedad auxiliar para el checkbox de selección en la tabla (no persistida). */
     private final BooleanProperty seleccionado = new SimpleBooleanProperty(false);
 
-    /** Nivel de riesgo calculado en memoria por el RiesgoAnalyzer (no persistido). */
     private final StringProperty nivelRiesgo = new SimpleStringProperty("BAJO");
 
     public DeudaDocente() {}
@@ -66,7 +64,6 @@ public class DeudaDocente {
     public BooleanProperty seleccionadoProperty()      { return seleccionado; }
     public StringProperty  nivelRiesgoProperty()       { return nivelRiesgo; }
 
-    // --- Getters ---
     public int        getIdDeuda()          { return idDeuda.get(); }
     public String      getNombreDocente()    { return nombreDocente.get(); }
     public String      getDni()              { return dni.get(); }
@@ -80,7 +77,6 @@ public class DeudaDocente {
     public boolean      isSeleccionado()      { return seleccionado.get(); }
     public String       getNivelRiesgo()      { return nivelRiesgo.get(); }
 
-    // --- Setters ---
     public void setIdDeuda(int v)                    { idDeuda.set(v); }
     public void setNombreDocente(String v)           { nombreDocente.set(v); }
     public void setDni(String v)                     { dni.set(v); }

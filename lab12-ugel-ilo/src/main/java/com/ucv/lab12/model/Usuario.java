@@ -1,12 +1,5 @@
 package com.ucv.lab12.model;
 
-/**
- * Entidad Usuario para el módulo de autenticación (CE2: niveles de
- * seguridad de la aplicación en cuanto a autenticación de usuarios).
- *
- * La contraseña NUNCA se guarda en texto plano: se almacena únicamente
- * el hash SHA-256 (con salt único) generado por util.PasswordUtil.
- */
 public class Usuario {
 
     private int idUsuario;

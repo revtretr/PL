@@ -15,7 +15,5 @@ public interface IDeudaDocenteService {
     void eliminar(int id);
     void eliminarSeleccionados(List<Integer> ids);
     void validar(DeudaDocente deuda);
-
-    /** Calcula y asigna el nivel de riesgo (BAJO/MEDIO/ALTO) de una deuda. */
     void calcularRiesgo(DeudaDocente deuda);
 }

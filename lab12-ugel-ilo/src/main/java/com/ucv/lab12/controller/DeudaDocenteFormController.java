@@ -77,9 +77,6 @@ public class DeudaDocenteFormController implements Initializable {
             lblNombreDocenteError.setVisible(false));
     }
 
-    // -------------------------------------------------------------------------
-    // API pública para el controller padre
-    // -------------------------------------------------------------------------
 
     public void setDeuda(DeudaDocente d) {
         this.deuda = d;
@@ -104,9 +101,6 @@ public class DeudaDocenteFormController implements Initializable {
         this.onGuardar = callback;
     }
 
-    // -------------------------------------------------------------------------
-    // Handlers FXML
-    // -------------------------------------------------------------------------
 
     @FXML
     private void onGuardar() {
@@ -148,9 +142,6 @@ public class DeudaDocenteFormController implements Initializable {
         cerrar();
     }
 
-    // -------------------------------------------------------------------------
-    // Helpers privados
-    // -------------------------------------------------------------------------
 
     private boolean validarFormulario() {
         boolean ok = true;

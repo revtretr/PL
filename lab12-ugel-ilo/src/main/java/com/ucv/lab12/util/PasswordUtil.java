@@ -4,16 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
-
-/**
- * Utilidad de autenticación segura (CE2 - ISO/IEC 27001, control A.9
- * "Gestión de accesos" / A.10 "Criptografía").
- *
- * Las contraseñas nunca se almacenan ni se comparan en texto plano:
- * se genera un salt aleatorio único por usuario y se calcula
- * SHA-256(salt + password). Solo el hash resultante y el salt se
- * guardan en la base de datos.
- */
 public final class PasswordUtil {
 
     private static final String ALGORITMO_HASH = "SHA-256";
@@ -21,14 +11,12 @@ public final class PasswordUtil {
 
     private PasswordUtil() {}
 
-    /** Genera un salt aleatorio codificado en Base64 (16 bytes). */
     public static String generarSalt() {
         byte[] saltBytes = new byte[16];
         RANDOM.nextBytes(saltBytes);
         return Base64.getEncoder().encodeToString(saltBytes);
     }
 
-    /** Calcula el hash SHA-256 de (salt + password), devuelto en hexadecimal. */
     public static String hash(String password, String salt) {
         try {
             MessageDigest digest = MessageDigest.getInstance(ALGORITMO_HASH);
@@ -40,14 +28,12 @@ public final class PasswordUtil {
         }
     }
 
-    /** Verifica que una contraseña en texto plano corresponda al hash almacenado. */
     public static boolean verificar(String passwordPlano, String salt, String hashAlmacenado) {
         if (passwordPlano == null || salt == null || hashAlmacenado == null) return false;
         String hashCalculado = hash(passwordPlano, salt);
         return constantTimeEquals(hashCalculado, hashAlmacenado);
     }
 
-    /** Comparación en tiempo constante para mitigar ataques de temporización. */
     private static boolean constantTimeEquals(String a, String b) {
         if (a.length() != b.length()) return false;
         int result = 0;

@@ -7,11 +7,6 @@ import java.util.List;
 public interface IDeudaDocenteRepository {
     List<DeudaDocente> findAll();
 
-    /**
-     * Consulta con filtros combinables (CE3: filtrar por fecha, tipo de
-     * deuda o situación laboral). Cualquier parámetro puede ir null/"" para
-     * indicar que no se aplica ese filtro.
-     */
     List<DeudaDocente> findByFilters(String nombreDocente, String tipoDeuda,
                                       String situacionLaboral, LocalDate fechaDesde,
                                       LocalDate fechaHasta);

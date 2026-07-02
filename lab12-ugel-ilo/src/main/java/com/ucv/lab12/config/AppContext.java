@@ -38,10 +38,6 @@ public class AppContext {
         return instance;
     }
 
-    /**
-     * Factory de controladores para FXMLLoader.setControllerFactory().
-     * Inyecta los servicios correspondientes en cada controlador.
-     */
     public Object getController(Class<?> type) {
         if (type == DeudaDocenteController.class) {
             return new DeudaDocenteController(deudaService);

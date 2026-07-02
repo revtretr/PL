@@ -9,12 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Repositorio JDBC de DeudaDocente. El campo DNI se cifra con AES
- * (CryptoUtil) antes de escribirlo en la base de datos y se descifra al
- * leerlo, de modo que la información confidencial nunca queda en texto
- * plano en el motor de base de datos (CE2).
- */
 public class DeudaDocenteRepository implements IDeudaDocenteRepository, AutoCloseable {
 
     private final DatabaseConfig dbConfig;

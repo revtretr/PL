@@ -13,20 +13,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-/**
- * Utilidad de exportación a PDF (CE3 - "permita exportar la información en
- * formato PDF para fines de control y auditoría").
- *
- * Genera un reporte tabular con paginación automática de la lista de
- * deudas administrativas de docentes que se le pase (ya filtrada por el
- * controller según fecha, tipo de deuda o situación laboral).
- */
 public final class PdfExportUtil {
 
     private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    // PDRectangle no expone rotate(); se arma el tamaño A4 apaisado manualmente
-    // invirtiendo ancho y alto del A4 vertical estándar.
     private static final PDRectangle A4_APAISADO =
         new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth());
 
@@ -34,7 +24,6 @@ public final class PdfExportUtil {
     private static final float ALTO_FILA = 16f;
     private static final int FILAS_POR_PAGINA = 32;
 
-    // Anchos de columna (deben sumar el ancho útil de la página A4-horizontal)
     private static final float[] ANCHOS = {30, 130, 70, 90, 60, 65, 65, 80, 65, 55};
     private static final String[] ENCABEZADOS = {
         "ID", "Docente", "DNI", "Tipo Deuda", "Monto",
