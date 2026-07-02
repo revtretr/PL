@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ucv.lab12.controller.LoginController"
+      alignment="CENTER"
+      spacing="0"
+      style="-fx-background-color:#fdfffc;"
+      prefWidth="420" prefHeight="480">
+
+    <VBox alignment="CENTER" spacing="16" maxWidth="330"
+          style="-fx-background-color:white; -fx-background-radius:10; -fx-padding:32;">
+
+        <Label text="UGEL - ILO" style="-fx-font-size:26; -fx-font-weight:bold; -fx-text-fill:#0D47A1;">
+            <font><Font size="26.0"/></font>
+        </Label>
+        <Label text="Sistema de Gestión de Deudas Administrativas de Docentes"
+               wrapText="true" textAlignment="CENTER"
+               style="-fx-font-size:12; -fx-text-fill:#555;"/>
+
+        <Separator/>
+
+        <VBox spacing="4" alignment="CENTER_LEFT">
+            <Label text="Usuario:" style="-fx-font-weight:bold;"/>
+            <TextField fx:id="txtUsuario" promptText="Ingrese su usuario" maxWidth="Infinity"/>
+        </VBox>
+
+        <VBox spacing="4" alignment="CENTER_LEFT">
+            <Label text="Contraseña:" style="-fx-font-weight:bold;"/>
+            <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" maxWidth="Infinity"/>
+        </VBox>
+
+        <Label fx:id="lblError" text="" wrapText="true"
+               style="-fx-text-fill:#C62828; -fx-font-size:11;" visible="false"/>
+
+        <Button fx:id="btnIngresar" text="Ingresar" onAction="#onIngresar"
+                defaultButton="true" maxWidth="Infinity"
+                style="-fx-background-color:#1976D2;-fx-text-fill:white;-fx-cursor:hand;-fx-font-weight:bold;-fx-padding:8;"/>
+
+    </VBox>
+</VBox>

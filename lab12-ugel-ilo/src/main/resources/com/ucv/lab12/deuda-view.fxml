@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ucv.lab12.controller.DeudaDocenteController"
+      spacing="10"
+      style="-fx-padding:15; -fx-background-color:#F5F5F5;">
+
+    <!-- ===== ENCABEZADO ===== -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="UGEL - Ilo | Gestión de Deudas Administrativas de Docentes"
+               style="-fx-font-size:20; -fx-font-weight:bold; -fx-text-fill:#1565C0;">
+            <font><Font size="20.0"/></font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblUsuario" text="" style="-fx-font-size:11; -fx-text-fill:#555;"/>
+    </HBox>
+    <Separator/>
+
+    <!-- ===== FILTROS ===== -->
+    <VBox spacing="8" style="-fx-background-color:#E3F2FD; -fx-padding:10; -fx-background-radius:6;">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Docente:" style="-fx-font-weight:bold;"/>
+            <TextField fx:id="txtDocente" promptText="Buscar por nombre del docente…" prefWidth="200"/>
+
+            <Label text="Tipo de Deuda:" style="-fx-font-weight:bold;"/>
+            <ComboBox fx:id="cmbTipoDeuda" promptText="Todos" prefWidth="180"/>
+
+            <Label text="Situación Laboral:" style="-fx-font-weight:bold;"/>
+            <ComboBox fx:id="cmbSituacionLaboral" promptText="Todas" prefWidth="150"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Fecha desde:" style="-fx-font-weight:bold;"/>
+            <DatePicker fx:id="dpFechaDesde" prefWidth="140"/>
+
+            <Label text="Fecha hasta:" style="-fx-font-weight:bold;"/>
+            <DatePicker fx:id="dpFechaHasta" prefWidth="140"/>
+
+            <Button fx:id="btnBuscar" text="Buscar" onAction="#onBuscar"
+                    style="-fx-background-color:#1976D2;-fx-text-fill:white;-fx-cursor:hand;-fx-font-weight:bold;"
+                    prefWidth="90"/>
+            <Button fx:id="btnLimpiarFiltros" text="Limpiar" onAction="#onLimpiarFiltros"
+                    style="-fx-cursor:hand;" prefWidth="90"/>
+        </HBox>
+    </VBox>
+
+    <!-- ===== BARRA DE ACCIONES ===== -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="btnCrear" text="+ Nueva Deuda" onAction="#onCrear"
+                style="-fx-background-color:#388E3C;-fx-text-fill:white;-fx-cursor:hand;-fx-font-weight:bold;"
+                prefWidth="140"/>
+        <Button fx:id="btnEliminarSeleccionados" text="Eliminar Seleccionados"
+                onAction="#onEliminarSeleccionados"
+                style="-fx-background-color:#C62828;-fx-text-fill:white;-fx-cursor:hand;-fx-font-weight:bold;"
+                prefWidth="170"/>
+        <Button fx:id="btnExportarPdf" text="Exportar PDF" onAction="#onExportarPdf"
+                style="-fx-background-color:#6A1B9A;-fx-text-fill:white;-fx-cursor:hand;-fx-font-weight:bold;"
+                prefWidth="130"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblTotal" text="Total: 0 registro(s)"
+               style="-fx-font-style:italic; -fx-text-fill:#555;"/>
+    </HBox>
+
+    <!-- ===== TABLA ===== -->
+    <TableView fx:id="tableView" VBox.vgrow="ALWAYS" editable="true"
+               style="-fx-background-color:white; -fx-border-color:#CFD8DC; -fx-border-radius:4;">
+        <columns>
+            <TableColumn fx:id="colSeleccion" text="" prefWidth="36" maxWidth="36" resizable="false"/>
+            <TableColumn fx:id="colId"                text="ID"           prefWidth="45"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colDocente"            text="Docente"      prefWidth="170"/>
+            <TableColumn fx:id="colDni"                text="DNI"          prefWidth="90"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colTipoDeuda"          text="Tipo Deuda"   prefWidth="150"/>
+            <TableColumn fx:id="colMonto"              text="Monto"        prefWidth="90"  style="-fx-alignment:CENTER-RIGHT;"/>
+            <TableColumn fx:id="colFechaDeuda"         text="F. Deuda"     prefWidth="90"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colFechaVencimiento"   text="F. Vence"     prefWidth="90"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colSituacionLaboral"   text="Situación"    prefWidth="100" style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colEstado"             text="Estado"       prefWidth="90"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colRiesgo"             text="Riesgo"       prefWidth="70"  style="-fx-alignment:CENTER;"/>
+            <TableColumn fx:id="colAcciones"           text="Acciones"     prefWidth="150" style="-fx-alignment:CENTER;"/>
+        </columns>
+        <placeholder>
+            <Label text="No hay registros para mostrar." style="-fx-text-fill:#888;"/>
+        </placeholder>
+    </TableView>
+
+</VBox>
